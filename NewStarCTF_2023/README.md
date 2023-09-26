@@ -30,5 +30,5 @@
    flag{b082c1e5-526a-4dbd-a5c4-00fa035bfb3c}
    ```
 
-   
+   [CTF-WriteUp/NewStarCTF_2023/image/1.png at main · 2aurora2/CTF-WriteUp (github.com)](https://github.com/2aurora2/CTF-WriteUp/blob/main/NewStarCTF_2023/image/1.png)
 
