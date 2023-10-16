@@ -4,17 +4,17 @@
 
 打开压缩包，发现要密码，结合所学的压缩包加密，看看其十六进制长什么样，判断其是否真加密；打开一看，发现50 4B 01 02 14 00开头和结尾的，不是09（或奇数）00，所以判定为伪加密；直接用winrar的修复功能，得到一个未加密的压缩包：rebuilt.Mommy.zip；然后看看result文件中的图片的ANSI ASCII，发现末尾有一串数字很可疑
 
-![1](./image\1.png)
+![1](./image/1.png)
 
 二话不说，直接用[Magic - CyberChef (gchq.github.io)](https://gchq.github.io/CyberChef/#recipe=Magic(3,false,true,'')&input=VkhKNUlIUnZJSFZ6WlNCemRHVm5hR2xrWlN3Z2JYa2dZbUZpWlg0Z0xTMGdTMkZtYTJFPQ)的magic模块来分析一下字符串可能的加密方式，发现好像是base65的编码，然后提示用steghide来解
 
-![1](./image\2.png)
+![1](./image/2.png)
 
 这时候就祭出kali虚拟机来跑一波，先看看有没有隐藏文件，发现有，那就提取文件得到一个txt文件
 
-![1](./image\3.png)
+![1](./image/3.png)
 
-![1](./image\4.png)
+![1](./image/4.png)
 
 FLAG：XSCTF{M0mmy_L0v3_Me_th3_mo5t}
 
@@ -30,7 +30,7 @@ FLAG：XSCTF{WeLc0m3_to_s7eg_w0rld}
 
 打开excel发现三个看起来空空的表格，改后缀zip解压后得到excel的源文件，发现`sheet1`这个表里面有的单元格是有值的，查了一下<row>的s属性是代表样式索引，本来以为改`style.xml`就可以拿到填充颜色的单元格，但是一直改不对，无奈手搓，最后发现是个二维码（尊嘟很好奇正确做法qwq
 
-![1](./image\5.png)
+![1](./image/5.png)
 
 FLAG：XSCTF{WHOoo_ME55_the_EXCcCeL}
 
